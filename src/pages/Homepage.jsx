@@ -29,7 +29,9 @@ export default function Homepage() {
         "https://flipkart-backend-fkju.onrender.com/products"
       );
       const data = await res.json();
-      setProducts(Array.isArray(data) ? data : []);
+      setProducts((existing) => {
+        return Array.isArray(data) ? data : [];
+      });
     } catch (err) {
       console.error("Error fetching products:", err);
       setProducts([]);
